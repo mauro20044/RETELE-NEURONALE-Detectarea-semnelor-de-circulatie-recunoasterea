@@ -1,0 +1,3 @@
+"""
+Package pentru achiziția datelor
+"""
