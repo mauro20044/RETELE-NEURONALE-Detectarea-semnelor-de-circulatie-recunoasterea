@@ -1,0 +1,23 @@
+filename,class,type,resolution,source,description
+stop.png,STOP,original,variable,"Camera digitală achiziție manuală","Semn STOP pătrat roșu"
+viteza30.png,VITEZA_30,original,variable,"Camera digitală achiziție manuală","Limitare viteză 30 km/h"
+trecerepietoni.png,TRECERE_PIETONI,original,variable,"Camera digitală achiziție manuală","Atenție trecere pietoni"
+scoala.png,SCOALA,original,variable,"Camera digitală achiziție manuală","Atenție zonă școlară"
+sensgiratoriu.png,SENS_GIRATORIU,original,variable,"Camera digitală achiziție manuală","Sens giratoriu obligatoriu"
+vireazadreapta.png,VIRAJA_DREAPTA,original,variable,"Camera digitală achiziție manuală","Avertizare curbă dreapta"
+ocoliredreapta.png,OCOLI_DREAPTA,original,variable,"Camera digitală achiziție manuală","Ocoli dreapta obligatoriu"
+faraprorietate.png,FARA_PRIORITATE,original,variable,"Camera digitală achiziție manuală","Cedează pasul / Yield"
+priorietate.png,PRIORITATE,original,variable,"Camera digitală achiziție manuală","Prioritate în intersecție"
+cedeaza.png,CEDEAZA,original,variable,"Camera digitală achiziție manuală","Cedare obligatorie"
+curbastanga.png,CURBA_STANGA,original,variable,"Camera digitală achiziție manuală","Avertizare curbă stânga"
+atentiedreapta.png,ATENTIE_DREAPTA,original,variable,"Camera digitală achiziție manuală","Atenție dreapta"
+oameni.png,OAMENI,original,variable,"Camera digitală achiziție manuală","Atenție oameni / pietoni"
+ambelesensuri.png,AMBELE_SENSURI,original,variable,"Camera digitală achiziție manuală","Cale bidirecțională"
+
+Summary,,,
+Total images,30,
+Original (acquired),14,(46%)
+Synthetic (augmented),16,(54%)
+Classes,14,
+Image size normalized,128x128,
+Format,PNG,

@@ -1,0 +1,25 @@
+{
+  "accuracy": 1.0,
+  "f1_score": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "num_test_samples": 15,
+  "num_classes": 15,
+  "labels": [
+    "AMBELE_SENSURI",
+    "ATENTIE_DREAPTA",
+    "CEDEAZA",
+    "CURBA_STANGA",
+    "FARA_PRIORITATE",
+    "INTERZIS",
+    "OAMENI",
+    "OCOLI_DREAPTA",
+    "PRIORITATE",
+    "SCOALA",
+    "SENS_GIRATORIU",
+    "STOP",
+    "TRECERE_PIETONI",
+    "VIRAJA_DREAPTA",
+    "VITEZA_30"
+  ]
+}
