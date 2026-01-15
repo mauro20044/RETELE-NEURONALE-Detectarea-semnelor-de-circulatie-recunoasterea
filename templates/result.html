@@ -3,23 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Prediction Result</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 40px; }
-      .container { max-width: 600px; margin: auto; }
-    </style>
+    <title>Rezultat Predicție</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
-    <div class="container">
-      <h1>Prediction Result</h1>
-      {% if filename %}
-      <div>
-        <img src="/uploads/{{ filename }}" alt="uploaded" style="max-width:300px;">
+    <div class="wrapper">
+      <div class="header">
+        <h1>Rezultat Predicție</h1>
+        <span class="pill">Inferență</span>
       </div>
-      <p><strong>Predicted Label:</strong> {{ label }}</p>
-      <p><strong>Confidence:</strong> {{ confidence }}</p>
-      {% endif %}
-      <p><a href="/">Back</a></p>
+      <div class="body">
+        {% if filename %}
+        <div class="thumb">
+          <img src="/uploads/{{ filename }}" alt="uploaded">
+        </div>
+        <div class="meta">
+          <div class="label">{{ label }}</div>
+          <div class="muted">Etichetă prezisă</div>
+          <div class="confidence-wrap">
+            <div class="muted">Încredere</div>
+            <div class="bar">
+              <span style="width: {{ confidence|replace('%','') }};"></span>
+            </div>
+            <div style="margin-top:6px; font-weight:600;">{{ confidence }}</div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="/">Încarcă altă imagine</a>
+      </div>
     </div>
   </body>
 </html>

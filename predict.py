@@ -32,6 +32,14 @@ except Exception:
 from src.preprocessing.image_preprocessing import ImagePreprocessor
 
 
+def resolve_default_model():
+    """Preferă models/optimized_model.h5 dacă există, altfel trained_model.h5."""
+    base_dir = os.path.join(os.path.dirname(__file__), 'models')
+    optimized = os.path.join(base_dir, 'optimized_model.h5')
+    trained = os.path.join(base_dir, 'trained_model.h5')
+    return optimized if os.path.exists(optimized) else trained
+
+
 def load_labels(labels_path):
     if not labels_path:
         return None
@@ -112,7 +120,7 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--image', help='Path to an image file')
     group.add_argument('--folder', help='Path to a folder with images')
-    parser.add_argument('--model', default='models/traffic_sign_model.h5', help='Path to saved model')
+    parser.add_argument('--model', default=None, help='Path to saved model (default: optimized_model.h5 dacă există, altfel trained_model.h5)')
     parser.add_argument('--labels', default='data/labels.txt', help='Optional labels file (one label per line)')
     parser.add_argument('--show', action='store_true', help='Show image(s) with prediction printed (opens window)')
 
@@ -122,8 +130,9 @@ def main():
     if labels:
         print(f"[INFO] Loaded {len(labels)} labels from {args.labels}")
 
-    print(f"[INFO] Loading model from: {args.model}")
-    model = load_model_file(args.model)
+    chosen_model_path = args.model or resolve_default_model()
+    print(f"[INFO] Loading model from: {chosen_model_path}")
+    model = load_model_file(chosen_model_path)
 
     preprocessor = ImagePreprocessor(target_size=(128,128), normalize=True)
 

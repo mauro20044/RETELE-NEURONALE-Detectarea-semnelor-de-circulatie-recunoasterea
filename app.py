@@ -5,10 +5,17 @@ from src.preprocessing.image_preprocessing import ImagePreprocessor
 import joblib
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
-# Use trained model (Etapa 5) instead of untrained model
-MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'trained_model.h5')
+# Prefer model optimizat (Etapa 6) dacă există; fallback pe modelul din Etapa 5
+OPTIMIZED_MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'optimized_model.h5')
+TRAINED_MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'trained_model.h5')
+
+def resolve_model_path():
+    """Returnează calea către modelul preferat (optimizat dacă există)."""
+    return OPTIMIZED_MODEL_PATH if os.path.exists(OPTIMIZED_MODEL_PATH) else TRAINED_MODEL_PATH
+
+MODEL_PATH = resolve_model_path()
 SCALER_PATH = os.path.join(os.path.dirname(__file__), 'models', 'trained_scaler.pkl')
-# Prefer labels saved with the model; fallback to data/labels.txt
+# Prefer labels salvate lângă model; fallback la data/labels.txt
 MODEL_LABELS_PATH = os.path.join(os.path.dirname(__file__), 'models', 'labels.txt')
 DEFAULT_LABELS_PATH = os.path.join(os.path.dirname(__file__), 'data', 'labels.txt')
 
@@ -53,7 +60,7 @@ def upload():
     global scaler
     if model is None:
         try:
-            model = load_model_file(MODEL_PATH)
+            model = load_model_file(resolve_model_path())
             scaler = joblib.load(SCALER_PATH)
         except Exception as e:
             return render_template('index.html', error=f'No model available: {e}')

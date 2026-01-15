@@ -3,31 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Traffic Sign Recognizer</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 40px; }
-      .container { max-width: 600px; margin: auto; }
-      .preview { margin-top: 20px; }
-    </style>
+    <title>Detector Semne de Circulatie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
-    <div class="container">
-      <h1>Traffic Sign Recognizer</h1>
-      {% if error %}
-      <div style="color: red">{{ error }}</div>
-      {% endif %}
-      <form method="post" action="/upload" enctype="multipart/form-data">
-        <label for="image">Choose an image:</label><br>
-        <input type="file" id="image" name="image" accept="image/*" required><br><br>
-        <button type="submit">Upload & Predict</button>
-      </form>
-      <div class="preview">
-        <p>Or try images from the test dataset:</p>
-        <ul>
-          {% for fn in [] %}
-          <li><a href="/uploads/{{fn}}">{{fn}}</a></li>
-          {% endfor %}
-        </ul>
+    <div class="shell">
+      <div class="card">
+        <div class="heading">
+          <h1>Detector Semne de Circulație</h1>
+          <span class="pill">Inferență live</span>
+        </div>
+        <p>Încarcă o imagine cu un semn de circulație și obține eticheta prezisă de modelul curent.</p>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="post" action="/upload" enctype="multipart/form-data">
+          <label for="image">Selectează imagine</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+          <button type="submit">Încarcă și prezice</button>
+        </form>
+        <div class="note">Sugestie: poți folosi imagini din setul de test pentru o verificare rapidă.</div>
       </div>
     </div>
   </body>
